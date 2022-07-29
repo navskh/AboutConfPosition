@@ -7,12 +7,18 @@ var myinterval = null;
 send();
 
 async function start() {
-  console.log("start");
+  var loading = document.getElementById("loading");
+  loading.style.display = "block";
+  loading.style.visibility = "visible";
+
   send();
 }
 
 // 반복 멈춤
 async function stop() {
+  var loading = document.getElementById("loading");
+  loading.style.display = "block";
+  loading.style.visibility = "hidden";
   console.log("stop!");
 }
 
@@ -31,5 +37,7 @@ function send() {
     headers: {
       "content-type": "application/json",
     },
-  }).then((response) => console.log(response));
+  })
+    .then((response) => console.log(response))
+    .catch((e) => console.log(e));
 }

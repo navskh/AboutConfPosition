@@ -2,12 +2,20 @@
 const puppeteer = require("puppeteer");
 const cheerio = require("cheerio");
 const nodemailer = require("nodemailer");
+const chromePaths = require("chrome-paths");
 
-async function isComeOut() {
+async function isComeOut(currUrl) {
+  var chrome = chromePaths.chrome;
+  // var chromium = chromePaths.chromium;
   // 브라우저를 실행한다.
   // 옵션으로 headless모드를 끌 수 있다.
   const browser = await puppeteer.launch({
+    // Browser 띄워서 보여줄지 여부 확인
     // headless: false,
+    // 윈도우 크롬 자동 설치시 설치되는 경로
+    executablePath: chrome,
+    // 윈도우 크롬 사용자 정보를 가지는 경로
+    // userDataDir: "C:/Users/navskh/AppData/Local/Google/Chrome/User Data",
   });
 
   // 새로운 페이지를 연다.
@@ -18,9 +26,14 @@ async function isComeOut() {
     height: 1080,
   });
 
-  await page.goto(
-    "http://univexpo.kr/%eb%b0%95%eb%9e%8c%ed%9a%8c%ec%86%8c%ea%b0%9c/%eb%b6%80%ec%8a%a4%eb%b0%b0%ec%b9%98%eb%8f%84/"
-  );
+  if (currUrl == null){
+    await page.goto(
+      "http://univexpo.kr/%eb%b0%95%eb%9e%8c%ed%9a%8c%ec%86%8c%ea%b0%9c/%eb%b6%80%ec%8a%a4%eb%b0%b0%ec%b9%98%eb%8f%84/"
+    );
+  }
+  else {
+    await page.goto(currUrl);
+  }
 
   const content = await page.content();
 
@@ -37,38 +50,6 @@ async function isComeOut() {
     console.log("나왔어");
     return "yes";
   }
-
-  // var senderSmtp = "smtp-mail.outlook.com";
-  // var senderPort = "587";
-  // var senderEmail = "navskh@jinhakapply.com";
-  // var senderPass = "gen281315@";
-  // var senderName = "Young";
-  // var receivers = "navskh@gmail.com";
-  // var emailSubject = "입시박람회 정보";
-  // var emailHtml = "<p>아직이야</p>";
-  // let transporter = nodemailer.createTransport({
-  //   // 사용하고자 하는 서비스
-  //   // service: 'gmail',
-  //   host: senderSmtp, // 'smtp.gmail.com'
-  //   port: senderPort, // 587
-  //   secure: false,
-  //   requireTLS: true,
-  //   auth: {
-  //     user: senderEmail, // 'myemail@gmail.com'
-  //     pass: senderPass, // 'password486!'
-  //   },
-  // });
-
-  // const mailOptions = {
-  //   from: senderEmail,
-  //   to: receivers,
-  //   subject: emailSubject,
-  //   html: emailHtml,
-  //   text: "인증메일입니다.",
-  // };
-  // await transporter.sendMail(mailOptions, function (error, info) {
-  //   if (error) console.log(error);
-  // });
 }
 
 exports.isComeOut = isComeOut;

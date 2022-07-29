@@ -3,12 +3,12 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const { Notification } = require("electron");
+const opn = require("opn");
 
 const conf = require("./src/conf");
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, "client")));
 app.use(bodyParser.json());
 
 // Subscribe Route
@@ -40,10 +40,16 @@ const sleep = function (ms) {
 };
 
 function showNotification(title, body) {
-  new Notification({
+  const n = new Notification({
     title: title,
     body: body,
-  }).show();
+  });
+
+  n.on("click", () => {
+    opn("http://univexpo.kr/");
+  });
+
+  n.show();
 }
 
 const port = 5000;
