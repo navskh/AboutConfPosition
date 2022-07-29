@@ -13,12 +13,10 @@ app.use(bodyParser.json());
 
 // Subscribe Route
 app.post("/subscribe", async (req, res) => {
-  const subscription = req.body;
-
   var thisCondtion = "";
+  var i = 0;
   while (thisCondtion != "yes") {
     thisCondtion = await conf.isComeOut();
-    console.log(thisCondtion);
     if (thisCondtion == "yes") {
       console.log("clear!");
       showNotification("나왔어!", "나왔으니 확인!");
@@ -34,10 +32,16 @@ app.get("/test", (req, res) => {
   res.send("Test Start");
 });
 
+let timer;
 // 팀장님이 만드신 함수 가져다 썼음.
 const sleep = function (ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+  return new Promise((resolve) => (timer = setTimeout(resolve, ms)));
 };
+
+app.post("/stop", async (req, res) => {
+  console.log(req.body.state);
+  clearTimeout(timer);
+});
 
 function showNotification(title, body) {
   const n = new Notification({
