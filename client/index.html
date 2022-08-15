@@ -6,7 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" href="button.css">
-  <script src="client.js"></script>
+  <script src="conference.js"></script>
+  <script src="DCU.js"></script>
 
   <title>My Monitoring</title>
 </head>
@@ -26,9 +27,24 @@
     </div>
   </div>
   <div id="result" class="result"></div>
+
+  <h1>DCU 체킹을 올렸는지 알아보자</h1>
+  <div class="button" id="startDCU">
+    <p type="button" class="btnText">Search(5Minute)</p>
+    <div class="btnTwo">
+      <p class="btnText2">Go!</p>
+    </div>
+  </div>
+  <div class="button" id="stopDCU">
+    <p type="button" class="btnText">Stop</p>
+    <div class="btnThree">
+      <p class="btnText2">X</p>
+    </div>
+  </div>
+  <div id="result" class="result"></div>
 </body>
 
-<div id="loading" class="loading-container">
+<div id="loading" class="loading-container" style="display: none;">
   <div class="loading"></div>
   <div id="loading-text" style="font-size:15px">돌고있음</div>
 </div>
@@ -39,6 +55,14 @@
   };
   document.getElementById("stop").onclick = function () {
     return stop();
+  };
+
+  document.getElementById("startDCU").onclick = function () {
+    return startDCU();
+
+  };
+  document.getElementById("stopDCU").onclick = function () {
+    return stopDCU();
   };
 </script>
 

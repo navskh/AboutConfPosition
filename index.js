@@ -6,6 +6,7 @@ const { Notification } = require("electron");
 const opn = require("opn");
 
 const conf = require("./src/conf");
+const dcu = require("./src/dcu");
 
 const app = express();
 
@@ -19,7 +20,7 @@ app.post("/subscribe", async (req, res) => {
     thisCondtion = await conf.isComeOut();
     if (thisCondtion == "yes") {
       console.log("clear!");
-      showNotification("나왔어!", "나왔으니 확인!");
+      showNotification("나왔어!", "나왔으니 확인!", "http://univexpo.kr/");
       res.json({ data: thisCondtion });
     }
 
@@ -29,11 +30,22 @@ app.post("/subscribe", async (req, res) => {
 
 app.get("/test", (req, res) => {
   console.log("test!");
-  res.send("Test Start");
+  showNotification("DCU!", "카톡보내자!", "https://docs.google.com/spreadsheets/d/1r9d9IPagwzshcCEVvaGqHV34vOpeXukIwY2f2yw1VgM/edit#gid=1607103647");
 });
 
+
+app.get("/testDCU", async (req, res) => {
+  var thisCondtion = {};
+  var i = 0;
+  thisCondtion = await dcu.DCUComeOut();
+  console.log(JSON.stringify(thisCondtion));
+  res.json({ body: JSON.stringify(thisCondtion) });
+  // await sleep(1000);
+});
+
+
 let timer;
-// 팀장님이 만드신 함수 가져다 썼음.
+// 팀장님이 만드신 함수 가져다 썼음.  
 const sleep = function (ms) {
   return new Promise((resolve) => (timer = setTimeout(resolve, ms)));
 };
@@ -43,14 +55,15 @@ app.post("/stop", async (req, res) => {
   clearTimeout(timer);
 });
 
-function showNotification(title, body) {
+
+function showNotification(title, body, url) {
   const n = new Notification({
     title: title,
     body: body,
   });
 
   n.on("click", () => {
-    opn("http://univexpo.kr/");
+    opn(url);
   });
 
   n.show();

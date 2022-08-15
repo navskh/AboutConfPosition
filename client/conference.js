@@ -1,7 +1,7 @@
 // Check for service worker
 var checkFlag = 0;
 var myinterval = null;
-send("start");
+// send("start");
 
 async function start() {
   var loading = document.getElementById("loading");
@@ -12,7 +12,7 @@ async function start() {
 }
 
 // 반복 멈춤
-async function stop() {
+async function stop() { 
   var loading = document.getElementById("loading");
   loading.style.display = "block";
   loading.style.visibility = "hidden";
