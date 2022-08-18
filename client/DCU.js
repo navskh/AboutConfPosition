@@ -26,7 +26,7 @@ function waitDCU() {
     result = isThereHim(data);
     if(result == 'yes') fetch("http://localhost:5000/test", {method: "GET",});
     else {
-      timer = setTimeout(() => {waitDCU();}, 30000);
+      timer = setTimeout(() => {waitDCU();}, 600000);
     }
   })
   .catch((e) => console.log(e));
