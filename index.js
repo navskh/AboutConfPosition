@@ -49,7 +49,7 @@ app.get("/testDCU", async (req, res) => {
 });
 
 app.get("/getSports", async (req, res) => {
-    const message = getSports();
+    const message = await getSports();
     res.json({ body: { message: message } });
 });
 
@@ -68,4 +68,4 @@ app.listen(port, () =>
     console.log(`server started on port ${port} http://localhost:5000`)
 );
 
-getSports();
+// getSports();

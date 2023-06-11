@@ -8,6 +8,12 @@ async function getSports() {
     const browser = await puppeteer.launch({
         headless: false,
         executablePath: chrome,
+        args: [
+            "--window-size=1920,1080",
+            "--disable-notifications",
+            "--disable-features=site-per-process",
+            "--disable-web-security",
+        ],
     });
 
     // 새로운 페이지를 연다.
@@ -46,10 +52,12 @@ async function getSports() {
     linkArr.push({ type: "old_gym", node: linkList[9] });
     linkArr.push({ type: "footsal", node: linkList[16] });
 
-    console.log(linkArr);
-    for (href of linkArr) {
-        if (href.type == "stadium") {
-            await href.node.click();
+    for (link of linkArr) {
+        if (link.type == "stadium") {
+            await link.node.click();
+            const thisDate = '[data-date="2023-06-17"]';
+            await page.waitForSelector(thisDate);
+            await page.click(thisDate);
         }
     }
 
