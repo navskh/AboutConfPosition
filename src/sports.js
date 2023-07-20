@@ -9,7 +9,7 @@ async function getSports() {
         headless: false,
         executablePath: chrome,
         args: [
-            "--window-size=1920,1080",
+            "--window-size=1440,980",
             "--disable-notifications",
             "--disable-features=site-per-process",
             "--disable-web-security",
@@ -20,8 +20,8 @@ async function getSports() {
     const page = await browser.newPage();
     // 페이지의 크기를 설정한다.
     await page.setViewport({
-        width: 1920,
-        height: 1080,
+        width: 1440,
+        height: 980,
     });
 
     await page.goto("https://athletics.snu.ac.kr/member/login");

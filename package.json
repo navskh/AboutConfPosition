@@ -27,13 +27,46 @@
         "start": "electron .",
         "build:win": "npm run build:win32 && npm run build:win64",
         "build:win32": "electron-builder --win portable --ia32",
-        "build:win64": "electron-builder --win portable --x64"
+        "build:win64": "electron-builder --win portable --x64",
+        "electron:xos": "ELECTRON_START_URL=http://localhost:3000 && yarn electron",
+        "deploy:xos": "electron-builder --mac"
     },
     "author": "",
     "license": "ISC",
     "build": {
+        "productName": "position",
+        "appId": "com.position.electron",
+        "asar": true,
+        "mac": {
+            "target": [
+                "default"
+            ],
+            "icon": "./client/pushImage.icns"
+        },
+        "dmg": {
+            "title": "NB",
+            "icon": "./client/pushImage.icns"
+        },
         "win": {
+            "target": [
+                "nsis"
+            ],
             "icon": "./client/pushImage.png"
+        },
+        "nsis": {
+            "oneClick": false,
+            "allowToChangeInstallationDirectory": false,
+            "createDesktopShortcut": true,
+            "perMachine": true,
+            "language": 1042,
+            "installerIcon": "build/icons/icon.ico",
+            "shortcutName": "NB",
+            "artifactName": "NB-${version}.${ext}",
+            "uninstallDisplayName": "NB"
+        },
+        "directories": {
+            "buildResources": "./build/",
+            "output": "./dist/"
         }
     }
 }
