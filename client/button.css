@@ -68,3 +68,19 @@ html, body{font-family : Roboto; text-align: center;}
 .button:active { /*Clicked and held*/
   box-shadow: 0px 5px 6px rgba(0,0,0,0.3);
 }
+
+
+
+.input-style {
+  width: 200px;
+  padding: 10px;
+  border: 2px solid #6f6f6f;
+  border-radius: 5px;
+  background: #252525;
+  color: #fff;
+  font-size: 16px;
+}
+
+.input-style:focus {
+  outline: none;
+}

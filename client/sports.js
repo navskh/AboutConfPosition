@@ -1,3 +1,5 @@
+// import { studentList } from "../contact.js";
+
 async function crawlSports() {
     console.log("crawl Start!");
     try {
@@ -11,4 +13,5 @@ async function crawlSports() {
     }
 }
 
+console.log(studentList);
 function stopCrawl() {}

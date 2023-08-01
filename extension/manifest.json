@@ -1,0 +1,37 @@
+{
+    "manifest_version": 3,
+    "name": "My Extension",
+    "version": "1.1",
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "storage"
+    ],
+    "action": {
+        "default_icon": {
+            "16": "icon/icons-16.png",
+            "48": "icon/icons-48.png",
+            "128": "icon/icons-128.png"
+        },
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "icons": {
+        "16": "icon/icons-16.png",
+        "48": "icon/icons-48.png",
+        "128": "icon/icons-128.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "jQuery.min.js",
+                "content.js"
+            ]
+        }
+    ]
+}
