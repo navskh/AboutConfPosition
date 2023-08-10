@@ -252,7 +252,10 @@ window.addEventListener("keypress", function (event) {
 
     if (thisExcuted > 0) return;
     console.log(event.shiftKey, event.key);
-    if (event.shiftKey && (event.key == "i" || event.key == "I")) {
+    if (
+        event.shiftKey &&
+        (event.key == "i" || event.key == "I" || event.key == "ㅑ")
+    ) {
         initAuto(
             startTime,
             endTime,
