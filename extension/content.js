@@ -251,7 +251,8 @@ window.addEventListener("keypress", function (event) {
     console.log(startTime, endTime, bro1, bro2, bro3);
 
     if (thisExcuted > 0) return;
-    if (event.ctrlKey && event.key == "i") {
+    console.log(event.shiftKey, event.key);
+    if (event.shiftKey && (event.key == "i" || event.key == "I")) {
         initAuto(
             startTime,
             endTime,

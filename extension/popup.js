@@ -26,6 +26,8 @@ function makeOption(selector) {
     });
 }
 
+let isRecent = true;
+$("#statusLabel").text("현재 세팅 값 최신상태입니다.").css("color", "blue");
 $(document).ready(function () {
     // 여기에 코드를 작성하세요. 이 코드는 페이지가 완전히 로드된 후 실행됩니다.
     makeOption("#bro1");
@@ -36,6 +38,12 @@ $(document).ready(function () {
 
     document.getElementById("save").addEventListener("click", function () {
         saveSetting();
+    });
+    $("#startTime, #endTime, #bro1, #bro2, #bro3").change(() => {
+        isRecent = false;
+        $("#statusLabel")
+            .text("현재 세팅 값 저장해야합니다.")
+            .css("color", "red");
     });
 });
 
@@ -71,4 +79,6 @@ function saveSetting() {
     chrome.storage.local.set({ collection }, function () {
         console.log("Value is set to " + collection);
     });
+    isRecent = true;
+    $("#statusLabel").text("현재 세팅 값 최신상태입니다.").css("color", "blue");
 }
