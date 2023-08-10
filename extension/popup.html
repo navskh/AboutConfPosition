@@ -2,20 +2,130 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
+
     <style>
         body {
             width: 300px;
             height: 200px;
             padding: 10px;
+            font-family: 'Arial', sans-serif;
+            /* 기본 폰트를 Arial로 설정 */
+        }
+
+        select,
+        button,
+        p {
+            margin-bottom: 10px;
+        }
+
+        select,
+        button {
+            width: 100%;
+            /* 폭을 부모 요소의 폭에 맞춰서 100%로 설정 */
+            padding: 10px;
+            /* 안쪽 여백 추가 */
+            font-size: 16px;
+            /* 글자 크기 조절 */
+            border: 1px solid #ccc;
+            /* 테두리 스타일 설정 */
+            border-radius: 5px;
+            /* 테두리 둥글게 */
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            /* 약간의 그림자 효과 */
+            outline: none;
+            /* 선택됐을 때 나타나는 외곽선 제거 */
+            transition: 0.3s;
+            /* 트랜지션 효과 (부드러운 효과) */
+        }
+
+        select:hover,
+        button:hover {
+            border-color: #999;
+            /* 호버 상태일 때 테두리 색상 변경 */
+        }
+
+        button {
+            background-color: #007BFF;
+            /* 버튼 배경색 */
+            color: #ffffff;
+            /* 버튼 글자색 */
+            cursor: pointer;
+            /* 마우스 커서를 손가락 모양으로 변경 */
+        }
+
+        button:active {
+            background-color: #0056b3;
+            /* 버튼을 클릭했을 때의 배경색 */
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            /* 비활성화된 버튼의 배경색 */
+            cursor: not-allowed;
+            /* 비활성화된 버튼의 커서 스타일 */
         }
     </style>
 </head>
 
 <body>
-    <h1 id="status">Loading...</h1>
-    <button id="toggle">toggle</button>
-</body>
+    <h1>Setting해봅시다🤗</h1>
+    <select id="startTime">
+        <option value="">시작시간</option>
+        <option value="07">07시 00분</option>
+        <option value="08">08시 00분</option>
+        <option value="09">09시 00분</option>
+        <option value="10">10시 00분</option>
+        <option value="11">11시 00분</option>
+        <option value="12">12시 00분</option>
+        <option value="13">13시 00분</option>
+        <option value="14">14시 00분</option>
+        <option value="15">15시 00분</option>
+        <option value="16">16시 00분</option>
+        <option value="17">17시 00분</option>
+        <option value="18">18시 00분</option>
+        <option value="19">19시 00분</option>
+        <option value="20">20시 00분</option>
+        <option value="21">21시 00분</option>
+        <option value="22">22시 00분</option>
+    </select>
+    <select id="endTime">
+        <option value="">종료시간</option>
+        <option value="07">07시 00분</option>
+        <option value="08">08시 00분</option>
+        <option value="09">09시 00분</option>
+        <option value="10">10시 00분</option>
+        <option value="11">11시 00분</option>
+        <option value="12">12시 00분</option>
+        <option value="13">13시 00분</option>
+        <option value="14">14시 00분</option>
+        <option value="15">15시 00분</option>
+        <option value="16">16시 00분</option>
+        <option value="17">17시 00분</option>
+        <option value="18">18시 00분</option>
+        <option value="19">19시 00분</option>
+        <option value="20">20시 00분</option>
+        <option value="21">21시 00분</option>
+        <option value="22">22시 00분</option>
+    </select>
+    <br>
+    <select id="bro1">
+        <option value="">형제1 선택</option>
+    </select>
+    <select id="bro2">
+        <option value="">형제2 선택</option>
+    </select>
+    <select id="bro3">
+        <option value="">형제3 선택</option>
+    </select>
+    <br>
 
+    <button id="save">저장하기</button>
+
+    <br>
+    <p>저장 후에 ctrl + i 키로 매크로를 작동하면 됩니다.</p>
+</body>
+<script src="jQuery.min.js"></script>
 <script src="popup.js"></script>
 
 </html>

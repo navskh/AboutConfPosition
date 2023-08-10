@@ -147,7 +147,27 @@ const 조일현 = new Student(
     "환경대학원 환경계획학과"
 );
 const 손명한 = new Student("손명한", "2021-12061", "010-4255-0307", "조경학과");
-
+stuList = {
+    김경환,
+    야마다,
+    심원,
+    이정현,
+    이은상,
+    장준영,
+    강희상,
+    김지용,
+    손승운,
+    박태준,
+    오영탁,
+    이영기,
+    김선욱,
+    김영욱,
+    정재원,
+    이승우,
+    여상구,
+    조일현,
+    손명한,
+};
 /**
  *
  * @param {string} startTime
@@ -202,12 +222,43 @@ function thisTimeSelect(selector, thisTime) {
     });
 }
 
+// content.js
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.type === "SELECT_VALUE") {
+        console.log("Received value from popup:", message.value);
+
+        // 웹 페이지 내의 JavaScript로 전달하거나 필요한 작업을 여기서 수행합니다.
+    }
+});
+
 //여기아래 입력하면 됨======================================
 let thisExcuted = 0;
+let startTime, endTime, bro1, bro2, bro3;
+$(document).ready(function () {
+    // 데이터를 가져올 때는 다음과 같이 할 수 있습니다.
+    chrome.storage.local.get(["collection"], function (result) {
+        const { collection } = result;
+
+        startTime = collection.startTime;
+        endTime = collection.endTime;
+        bro1 = collection.bro1;
+        bro2 = collection.bro2;
+        bro3 = collection.bro3;
+    });
+});
+
 window.addEventListener("keypress", function (event) {
+    console.log(startTime, endTime, bro1, bro2, bro3);
+
     if (thisExcuted > 0) return;
     if (event.ctrlKey && event.key == "i") {
-        initAuto("14", "16", 이정현, 이정현, 이정현);
+        initAuto(
+            startTime,
+            endTime,
+            stuList[bro1],
+            stuList[bro2],
+            stuList[bro3]
+        );
         thisExcuted = 1;
     }
 });
