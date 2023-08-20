@@ -248,10 +248,10 @@ $(document).ready(function () {
 });
 
 window.addEventListener("keypress", function (event) {
-    console.log(startTime, endTime, bro1, bro2, bro3);
+    // console.log(startTime, endTime, bro1, bro2, bro3);
 
     if (thisExcuted > 0) return;
-    console.log(event.shiftKey, event.key);
+    // console.log(event.shiftKey, event.key);
     if (
         event.shiftKey &&
         (event.key == "i" || event.key == "I" || event.key == "ㅑ")
