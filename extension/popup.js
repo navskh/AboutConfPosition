@@ -18,6 +18,7 @@ const broList = [
     "여상구",
     "조일현",
     "손명한",
+    "이진호",
 ];
 
 function makeOption(selector) {
