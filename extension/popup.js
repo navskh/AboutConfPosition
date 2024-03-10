@@ -22,6 +22,8 @@ const broList = [
     "최진명",
     "이영규",
     "선호윤",
+    "이강헌",
+    "김영찬",
 ];
 
 function makeOption(selector) {
