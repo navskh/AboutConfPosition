@@ -3,7 +3,6 @@ const broList = [
     "야마다",
     "심원",
     "이정현",
-    "이은상",
     "장준영",
     "강희상",
     "김지용",
@@ -21,6 +20,8 @@ const broList = [
     "이진호",
     "김회영",
     "최진명",
+    "이영규",
+    "선호윤",
 ];
 
 function makeOption(selector) {
