@@ -3,3 +3,8 @@ dist
 
 
 contact.js
+
+# Large files
+*.pdf
+*.docx
+*.zip
